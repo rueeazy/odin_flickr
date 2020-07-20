@@ -1,0 +1,14 @@
+<h1>Photos Search</h1>
+
+<%= form_with url: staticpages_path, local: true, method: :get do |form| %>
+    <%= form.label "Flickr ID:" %>
+    <%= form.text_field :flickr_id %>
+    <%= form.submit "Search" %>
+<% end %>
+<br>
+
+<% if params[:flickr_id] %>
+    <% @photos.each do |photo| %>
+        <img src="<%= Flickr.url(photo) %>" /><br>
+    <% end %>
+<% end %>
